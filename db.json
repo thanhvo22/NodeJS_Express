@@ -31,7 +31,9 @@
     {
       "name": "van thanh",
       "phone": "9999999",
-      "id": "MNwUlVo7e"
+      "id": "MNwUlVo7e",
+      "email": "thanhvp2707@gmail.com",
+      "pass": "123"
     },
     {
       "name": "asdf",
@@ -42,6 +44,11 @@
       "name": "vovanthanh_310341",
       "phone": "adfs",
       "id": "MXQI-sgTG"
+    },
+    {
+      "name": "asdfad",
+      "phone": "asdfasd",
+      "id": "13Ra4hFAe"
     }
   ]
 }

@@ -3,6 +3,9 @@ const shortid = require('shortid');
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var userRoute = require('./routes/user.route');
+var authRoute = require('./routes/auth.route');
+var autMiddleware = require('./middlewares/auth.middlewares');
+
 var db = require('./db');
 const app = express();
 const port = 3000;
@@ -21,7 +24,12 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/users', userRoute);
+//phai dang nhap moi moi dung dc
+app.use('/users', autMiddleware.requireAuth, userRoute);
+
+//use login
+app.use('/auth', authRoute);
+
 app.use(express.static('public'));
 
 app.listen(port, () => {

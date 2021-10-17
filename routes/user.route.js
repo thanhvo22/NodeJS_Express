@@ -5,6 +5,9 @@ var express = require('express');
 var router = express.Router();
 const app = express();
 var validate = require('../validate/user.validate');
+var autMiddleware = require('../middlewares/auth.middlewares');
+
+//ktra login trc roi vo index
 router.get('/',controller.index);
 
 router.get('/cookie', function(req, res, next){
