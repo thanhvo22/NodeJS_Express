@@ -1,0 +1,22 @@
+extends ../layout/common.pug
+
+block content
+
+	h1 ThanhVo Vi Vu
+	a(href='/users/create') Create
+	form(action="/users/search", method="GET")
+		input(type = "text", name = "q")
+		button Search
+	table.table
+		tr
+			th Name
+			th Phone
+			th Actions
+
+		each user in users
+			tr
+				td= user.name
+				td= user.phone
+				span &nbsp
+				td
+					a.btn.btn-light(href='/users/' + user.id) View
