@@ -1,12 +1,13 @@
 const express = require('express');
 const shortid = require('shortid');
 const bodyParser = require('body-parser');
-
+var cookieParser = require('cookie-parser');
 var userRoute = require('./routes/user.route');
 var db = require('./db');
 const app = express();
 const port = 3000;
 
+app.use(cookieParser());
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
