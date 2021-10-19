@@ -21,6 +21,8 @@ module.exports.postLogin = function(req, res){
 		res.render('auth/login', { errors: ['Wrong password'], values: req.body});
 		return;
 	}
-	res.cookie('userId', user.id);
+	res.cookie('userId', user.id, {
+		signed: true
+	});
 	res.redirect('/users');
 };
