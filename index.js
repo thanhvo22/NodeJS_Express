@@ -1,10 +1,14 @@
+require('dotenv').config();
+
 const express = require('express');
 const shortid = require('shortid');
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var userRoute = require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
+var productRouter = require('./routes/product.route');
 var autMiddleware = require('./middlewares/auth.middlewares');
+
 
 var db = require('./db');
 const app = express();
@@ -20,7 +24,7 @@ app.set('views', './views');
 
 app.get('/', (req, res) => {
   res.render('index',{
-  	name:"Thanh Vo"
+  	name:"Thanh Van Vo "
   });
 });
 
@@ -30,6 +34,7 @@ app.use('/users', autMiddleware.requireAuth, userRoute);
 //use login
 app.use('/auth', authRoute);
 
+app.use('/product', productRouter);
 app.use(express.static('public'));
 
 app.listen(port, () => {

@@ -1,0 +1,28 @@
+extends ../layout/common.pug
+
+block content
+    //- .card(style='width: 18rem;')
+        
+    each prod in products
+        .card(style='width:18rem;')
+            img.card-img-top(src=prod.image) 
+            .card-body
+                h5.card-title= prod.name
+                p.card-text= prod.description 
+                s content.
+                a.btn.btn-primary(href='#') Go somewhere
+    nav(aria-label='...')
+        ul.pagination
+            li.page-item.disabled
+            a.page-link(href='/product/?page=' + prevPage) Previous
+            li.page-item
+            a.page-link(href='/product/?page=' + prevPage) #{prevPage}
+            li.page-item.active(aria-current='page')
+            a.page-link(href='/product/?page=' + page)
+                | #{page}
+                span.sr-only (current)
+            li.page-item
+            a.page-link(href='/product/?page=' + nextPage) #{nextPage}
+            li.page-item
+            a.page-link(href='/product/?page=' + nextPage) Next
+  
