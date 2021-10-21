@@ -1,16 +1,21 @@
 extends ../layout/common.pug
 
 block content
-    //- .card(style='width: 18rem;')
-        
-    each prod in products
-        .card(style='width:18rem;')
-            img.card-img-top(src=prod.image) 
-            .card-body
-                h5.card-title= prod.name
-                p.card-text= prod.description 
-                s content.
-                a.btn.btn-primary(href='#') Go somewhere
+    div 
+        h1 ff
+        if sessions 
+            h2= sessions.cart
+
+    .row-cols-1.row-cols-md-2
+        .col.mb-4    
+            each prod in products
+                .card
+                    img.card-img-top(src=prod.image) 
+                    .card-body
+                        h5.card-title= prod.name
+                        p.card-text= prod.description 
+                        s content.
+                        a.btn.btn-primary(href='/cart/add/'+ prod.id) Go somewhere
     nav(aria-label='...')
         ul.pagination
             li.page-item.disabled

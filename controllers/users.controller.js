@@ -1,6 +1,8 @@
 var db = require('../db');
 const shortid = require('shortid');
 var validate = require('../validate/user.validate');
+let path = require('path');
+
 module.exports.index  = function(req,res){
 	res.render('users/index', {users: db.get('users').value()});
 };
@@ -26,8 +28,7 @@ module.exports.viewId = function(req,res){
 
 module.exports.postCreateUser = function(req,res){
 	req.body.id = shortid.generate();
-	//bai12
-	
+	req.body.avatar = req.file.path.split('/').slice(1).join('/');
 	db.get('users').push(req.body).write();
 	res.redirect('/users');
 };
