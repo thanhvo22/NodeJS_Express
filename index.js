@@ -4,6 +4,9 @@ const express = require('express');
 const shortid = require('shortid');
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URL);
 
 var userRoute = require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
