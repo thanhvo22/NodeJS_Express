@@ -13,6 +13,8 @@ var authRoute = require('./routes/auth.route');
 var productRouter = require('./routes/product.route');
 var cartRouter = require('./routes/cart.route');
 
+var apiProductRouter = require('./api/routers/product.router');
+
 var autMiddleware = require('./middlewares/auth.middlewares');
 var sessionMiddleware = require('./middlewares/session.widdlewares');
 
@@ -26,6 +28,7 @@ app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(sessionMiddleware);
 
+app.use('/api/products', apiProductRouter);
 app.set('view engine', 'pug');
 app.set('views', './views');
 
@@ -43,6 +46,8 @@ app.use('/users', autMiddleware.requireAuth, userRoute);
 app.use('/auth', authRoute);
 app.use('/product', productRouter);
 app.use('/cart', cartRouter);
+
+
 
 app.use(express.static('public'));
 
